@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-import "../styles/Pokegame.css";
 import { changeNumbertoString, imageAPIlink, pokemonAPIlink } from '../Helper';
 import PlayerSection from './PlayerSection';
+
+import "../styles/Pokegame.css";
 
 function Pokegame() {
     // state variables
@@ -13,8 +15,9 @@ function Pokegame() {
 
     useEffect(() => {
         async function fetchFunction(number, setState, setScore) {
-            const data = await fetch(`${pokemonAPIlink}${number}`)
-                .then(res => res.json());
+            const data = await axios.get(`${pokemonAPIlink}${number}`)
+                .then(res => res.data)
+                .catch(err => console.log(err))
 
             let imageIndex = changeNumbertoString(number);
             let source = `${imageAPIlink}${imageIndex}.png`;
@@ -42,7 +45,7 @@ function Pokegame() {
     }, []);
 
     let sum_one_result = false, sum_two_result = false;
-    Player_one_score > Player_second_score
+    Player_one_score >= Player_second_score
         ? sum_one_result = true
         : sum_two_result = true
 
