@@ -1,6 +1,6 @@
 # Pokemon Game in ReactJS
 
-link to the app : https://pokedex-project-01.vercel.app/
+link to the app : https://pokedex-project-1107-itssamyak.vercel.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
